@@ -1,5 +1,5 @@
 import cv2
-from database import conn, create_table, insert_detection
+from database import create_table, insert_detection, conn
 
 
 class convert_to_frame:
@@ -42,8 +42,6 @@ class Detection:
             for box in labels[0].boxes:
                 cls_id = int(box.cls[0])
                 cls_text = self.model.names[cls_id]
-                insert_detection(self.conn, timestamp, cls_text)
-
-
+                insert_detection(conn, timestamp, cls_text)
 
 
